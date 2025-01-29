@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     const supabase = await createClient();
     // SupabaseにStripeカスタマーIDを保存
-    const { error } = await supabase
+    await supabase
       .from("profile")
       .update({ stripe_customer: customer.id })
       .eq("id", record.id);

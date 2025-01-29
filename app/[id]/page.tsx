@@ -37,10 +37,9 @@ async function getPremiumContent(lesson: { id: string }) {
 export default async function LessonDetails({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-  console.log(id);
   const lesson = await fetchLesson(id);
   console.log(lesson);
   const video_url = await getPremiumContent(lesson);

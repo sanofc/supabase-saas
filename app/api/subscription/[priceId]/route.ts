@@ -4,7 +4,7 @@ import Stripe from "stripe";
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { priceId: string } }
+  { params }: { params: Promise<{ priceId: string }> }
 ) {
   console.log("subscription");
 

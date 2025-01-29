@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import React from "react";
 
-export const Page = async () => {
+const dashboard = async () => {
   const supabase = await createClient();
   const {
     data: { user },
@@ -16,4 +16,4 @@ export const Page = async () => {
   return <Dashboard />;
 };
 
-export default Page;
+export default dashboard;

@@ -1,14 +1,13 @@
 "use client";
 
 import { useUser } from "@/context/user";
-import { createClient } from "@/utils/supabase/client";
 import { useEffect } from "react";
 
 const Login = () => {
   const { login } = useUser();
   useEffect(() => {
     login();
-  }, []);
+  }, [login]);
 
   return <p>Logging in</p>;
 };

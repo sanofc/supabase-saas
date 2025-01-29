@@ -1,10 +1,8 @@
 import { createClient } from "@/utils/supabase/server";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
-export async function GET(
-  req: NextRequest
-) {
+export async function GET() {
   console.log("subscription");
 
   const supabase = await createClient();
@@ -34,7 +32,7 @@ export async function GET(
   const session = await stripe.billingPortal.sessions.create({
     customer: stripe_customer,
     return_url: `${process.env.CLIENT_URL}/dashboard`,
-  })
+  });
 
   return NextResponse.json({ url: session.url });
 }
