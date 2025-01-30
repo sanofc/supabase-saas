@@ -1,3 +1,4 @@
+import { createAdminClient } from "@/utils/supabase/admin";
 import { createClient } from "@/utils/supabase/server";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from "stripe";
@@ -25,7 +26,7 @@ export async function POST(req: NextRequest) {
       email: record.email,
     });
 
-    const supabase = await createClient();
+    const supabase = await createAdminClient();
 
 
     const { data, error: profileError } = await supabase
