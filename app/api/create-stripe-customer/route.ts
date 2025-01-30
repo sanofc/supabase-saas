@@ -26,6 +26,21 @@ export async function POST(req: NextRequest) {
     });
 
     const supabase = await createClient();
+
+
+    const { data, error: profileError } = await supabase
+      .from("profile")
+      .select()
+    if (profileError) {
+      console.error("Supabase error:", profileError);
+      return NextResponse.json(
+        { error: "Internal Server Error" },
+        { status: 500 }
+      );
+    }
+
+    console.log("Profile:", data);
+
     // SupabaseにStripeカスタマーIDを保存
     const { error } = await supabase
       .from("profile")
